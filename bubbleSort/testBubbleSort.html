@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="author" name="tuzkiss">
+    <title>text bubble demo</title>
+</head>
+<body>
+    <div id="result"></div>
+    
+    <script src="../common/CArray.js"></script>
+    <script>
+        var startTime = new Date();
+
+        var numElement = 100000;
+
+        var myNum = new CArray(numElement);
+
+        myNum.setData();
+
+        var bubbleSort = function (arr) {
+            for (var i = 0 , len = arr.length; i < len; i ++) {
+                for (var j = i; j < len; j ++) {
+                    if (arr[i] > arr[j]) {
+                        swap(arr, i, j);
+                    }
+                }
+            }
+
+            console.log( 'bubble sort ' + arr.length + ' numbers ' + ( new Date() - startTime ) + ' ms' );
+        }
+
+        var res = bubbleSort(myNum.dataStore);
+
+        document.getElementById('result').innerHTML = myNum.toString(); 
+        document.getElementById('result').innerHTML += '<br/>bubble sort success.';
+
+
+    </script>
+</body>
+</html>

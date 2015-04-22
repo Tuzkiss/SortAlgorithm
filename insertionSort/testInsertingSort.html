@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="tuzkiss">
+    <title>test insertion sort</title>
+</head>
+<body>
+    <div id="result"></div>
+
+    <script src="../common/CArray.js"></script>
+
+    <script>
+        var numElements = 10;
+        var myNum = new CArray(numElements);
+        myNum.setData();
+
+        var insertionSort = function (arr) {
+            var tmp, last;
+
+            for (var i = 1, len = arr.length; i < len; i ++) {
+                tmp = arr[i];
+                last = i;
+
+                while (last > 0 && (arr[last - 1] >= tmp)) {
+                    arr[last] = arr[last - 1];
+                    last --;
+                }
+                arr[last] = tmp;
+            }
+
+            return arr;
+        }
+
+        myNum.dataStore = insertionSort(myNum.dataStore);
+
+
+        document.getElementById('result').innerHTML = myNum.toString(); 
+        document.getElementById('result').innerHTML += '<br/>Test insertion sort success.';
+    </script>
+</body>
+</html>

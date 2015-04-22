@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="author" name="tuzkiss">
+    <title>Test Qucik Sort demo</title>
+</head>
+<body>
+    <div id="result"></div>
+
+    <script src="../common/CArray.js"></script>
+
+    <script>
+        var startTime = new Date();
+
+        var numElements = 1000;
+        var myNum = new CArray(numElements);
+        myNum.setData();
+
+
+        var quickSort = function (arr) {
+            var len = arr.length,
+                value = arr[0],
+                left = [],
+                right = [];
+
+            if (0 === len) {
+                return arr;
+            }
+
+            for (var i = 1; i < len; i ++) {
+                if (arr[i] < value) {
+                    left.push(arr[i]);
+                } else {
+                    right.push(arr[i]);
+                }
+            }
+
+            return quickSort(left).concat(value, quickSort(right));
+        }
+
+        myNum.dataStore = quickSort(myNum.dataStore);
+
+
+        document.getElementById('result').innerHTML = myNum.toString(); 
+        document.getElementById('result').innerHTML += '<br/>Test quick sort success.';
+
+    </script>
+</body>
+</html>

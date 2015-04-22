@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="author" name="tuzkiss">
+    <title>Test CArray demo</title>
+</head>
+<body>
+    
+    <div id="result"></div>
+
+    <script src="CArray.js"></script>
+
+    <script>
+        var numElements = 99;
+        var myNum = new CArray(numElements);
+        myNum.setData();
+        document.getElementById('result').innerHTML = myNum.toString(); 
+        document.getElementById('result').innerHTML += '<br/>Test success.';
+    </script>
+
+</body>
+</html>

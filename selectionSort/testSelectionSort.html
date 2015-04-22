@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Selection Sort</title>
+</head>
+<body>
+    <div id="result"></div>
+
+    <script src="../common/CArray.js"></script>
+
+    <script>
+        var numElements = 100;
+
+        var myNum = new CArray(numElements);
+
+        myNum.setData();
+
+        var selectionSort = function (arr) {
+            var min, last, tmp;
+
+            for (var i = 0, len = arr.length; i < len; i ++) {
+                min = arr[i];
+                for (j = i + 1; j < len; j ++) {
+                    if (arr[j] < min) {
+                        last = j;
+                        min = arr[j];
+                    }
+                }
+                tmp = arr[last];
+                arr[last] = arr[i];
+                arr[i] = tmp;
+            }
+
+            return arr;
+        }
+
+        myNum.dataStore = selectionSort(myNum.dataStore);
+
+        document.getElementById('result').innerHTML = myNum.toString();
+        document.getElementById('result').innerHTML += '<br/>Test selection sort success.';
+
+    </script>
+</body>
+</html>
