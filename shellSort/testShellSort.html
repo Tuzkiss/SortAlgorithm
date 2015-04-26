@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Shell Sort</title>
+</head>
+<body>
+    <div id="result"></div>
+
+    <script src="../common/CArray.js"></script>
+
+    <script>
+
+        var numElements = 100;
+        var myNum = new CArray(numElements);
+        myNum.setData();
+
+        myNum.gaps = [5, 3, 1];
+
+        var shellSort = function(arr, gaps) {
+            for (var g = 0, gLen = gaps.length; g < gLen; g ++) {
+                for (var i = gaps[g], len = arr.length; i < len; i ++) {
+                    var tmp = arr[i];
+
+                    for (var j = i; j >= gaps[g] && arr[j - gaps[g]] > tmp; j -= gaps[g]) {
+                        arr[j] = arr[j - gaps[g]];
+                    }
+                    arr[j] = tmp;
+                }
+            }
+
+            return arr;
+        }
+
+        myNum.dataStore = shellSort(myNum.dataStore, myNum.gaps);
+
+        document.getElementById('result').innerHTML = myNum.toString(); 
+        document.getElementById('result').innerHTML += '<br/>Test shell sort success.';
+    </script>
+
+</body>
+</html>
